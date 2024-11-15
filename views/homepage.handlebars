@@ -1,0 +1,38 @@
+<div class="tech-categories">
+  <h2>Tech Categories</h2>
+  <div class="category-grid">
+    {{#each categories as |category|}}
+    <a href="/category/{{category}}" class="category-card">
+      <i class="tech-icon {{category-icon category}}"></i>
+      <h3>{{category}}</h3>
+    </a>
+    {{/each}}
+  </div>
+</div>
+
+<div class="featured-posts">
+  <h2>Latest in Tech</h2>
+  {{#each posts as |post|}}
+  <article class="post-card">
+    <div class="post-category">{{post.category}}</div>
+    <div class="post-header">
+      <h3>
+        <a href="/post/{{post.id}}">{{post.title}}</a>
+      </h3>
+      <div class="post-meta">
+        <span class="author">By {{post.user.username}}</span>
+        <span class="date">{{format_date post.created_at}}</span>
+        <span class="read-time">{{calculate_read_time post.content}}</span>
+      </div>
+    </div>
+    <div class="post-preview">
+      {{truncate post.content}}
+    </div>
+    <div class="post-tags">
+      {{#each post.tags as |tag|}}
+      <span class="tag">{{tag}}</span>
+      {{/each}}
+    </div>
+  </article>
+  {{/each}}
+</div>

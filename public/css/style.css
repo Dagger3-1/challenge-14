@@ -1,0 +1,166 @@
+header, .project:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #1b89bc;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  color: #065b83;
+  text-decoration: underline;
+}
+
+.dollar-amount {
+  color: #056605;
+  font-weight: bold;
+  margin-left: -5px;
+}
+
+.post {
+  margin-bottom: 2rem;
+}
+
+.post-metadata {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.comment-metadata {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btn-link {
+  text-decoration: none;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #1a1a1a;          /* Dark background for tech feel */
+  --secondary: #00ff00;        /* Matrix-style green for accents */
+  --background: #f0f0f0;       /* Light grey background */
+  --code-bg: #2d2d2d;         /* Dark background for code blocks */
+  --text: #333333;
+  --code-text: #00ff00;       /* Green text for code */
+  --link: #0066cc;            /* Tech blue for links */
+  --error: #e74c3c;
+  --success: #27ae60;
+  --container-width: 1200px;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+/* Header and Navigation */
+header {
+  background-color: var(--primary);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+nav {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a, nav button {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: var(--secondary);
+}
+
+#logout {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+#logout:hover {
+  background-color: white;
+  color: var(--primary);
+}
+
+header h1 {
+  color: white;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Main Content */
+main {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Post Styles */
+.post-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-header h2 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.post-header h2 a {
+  text-decoration: none;
+  color: inherit;
+}
