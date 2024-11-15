@@ -12,8 +12,15 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
+require('dotenv').config();
+
+if (!process.env.SESSION_SECRET) {
+  console.error('SESSION_SECRET is not set in environment variables');
+  process.exit(1);
+}
+
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SESSION_SECRET,
   cookie: {
     maxAge: 900000,
     httpOnly: true,
@@ -38,20 +45,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
-
-const startServer = async () => {
-  try {
-    await sequelize.sync({ force: false });
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-};
-
-startServer();

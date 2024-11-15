@@ -54,12 +54,4 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.get('/check-session', (req, res) => {
-  if (req.session.logged_in) {
-    res.status(200).json({ message: 'Session valid' });
-  } else {
-    res.status(401).json({ message: 'Session expired' });
-  }
-});
-
 module.exports = router;

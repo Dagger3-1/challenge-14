@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// Get all posts for homepage
+// Homepage - show all posts
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -12,20 +12,21 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
+      order: [['created_at', 'DESC']],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('homepage', {
       posts,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Get single post
+// Single post view
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -46,28 +47,23 @@ router.get('/post/:id', async (req, res) => {
       ],
     });
 
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
-    }
-
     const post = postData.get({ plain: true });
 
     res.render('single-post', {
       ...post,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Dashboard - Get all posts by user
+// Dashboard - requires authentication
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
       },
       include: [
         {
@@ -75,13 +71,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
           attributes: ['username'],
         },
       ],
+      order: [['created_at', 'DESC']],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('dashboard', {
       posts,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
