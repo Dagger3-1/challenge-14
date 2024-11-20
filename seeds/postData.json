@@ -2,11 +2,13 @@
   {
     "title": "Why JavaScript is Awesome",
     "content": "JavaScript continues to evolve with new features...",
-    "date_created": "2024-03-20"
+    "category": "JavaScript",
+    "user_id": 1
   },
   {
     "title": "Getting Started with Node.js",
     "content": "Node.js is a powerful runtime environment...",
-    "date_created": "2024-03-21"
+    "category": "Node.js",
+    "user_id": 2
   }
 ] 
